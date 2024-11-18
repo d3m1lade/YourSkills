@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Header Example</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --backgroundImage: #FFFFFF; /*white*/
+            --textColor: #282828; /*grey*/
+             --buttonBackground: #2E2E2E; /* black */
+            --hover: #FBEB73; /*yellow*/
+        }
+    
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+
+        html {
+    scroll-behavior: smooth;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 56px;
+            background-color: var(--backgroundImage);
+        }
+
+        /* Logo Section */
+    .logo-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        column-gap: 0.5rem;
+    }
+
+    .logo-container img {
+        width: 48px;
+        height: 45px;
+        padding: 1.5px 1.6px;
+    }
+
+    .logo-container h1 {
+        font-size: 1.5rem;
+        color: var(--textColor);
+        font-size: 36px;
+        font-weight: 590;
+        line-height: 43.2px;
+        text-align: left;
+        text-decoration-skip-ink: none;
+    }
+
+
+    /* Navigation Section */
+    nav {
+        flex-grow: 1;
+        text-align: center;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: var(--textColor);
+        margin: 0 28px;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    nav a:hover {
+        color: var(--hover);
+    }
+
+
+
+    /* Buttons Section */
+    .auth-buttons button {
+        margin-left: 10px;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+    .auth-buttons .sign-in {
+        background: var(--backgroundImage);
+        border: 1px solid var(--buttonBackground);
+        color: var(--textColor);
+        border-radius: 50px;
+    }
+
+    .auth-buttons .sign-up {
+        background: var(--buttonBackground);
+        color: var(--backgroundImage);
+        border-radius: 50px;
+    }
+
+    .auth-buttons .sign-in:hover {
+        opacity: 0.9;
+        background-color: var(--hover);
+    }
+    .auth-buttons .sign-up:hover {
+        opacity: 0.9;
+        background-color: var(--hover);
+        color: var(--textColor);
+    }
+
+    /* Section Styling */
+    .about-section,
+    .mission-section {
+        padding: 40px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: left;
+        color: var(--textColor);
+    }
+
+    .section-title {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .section-title .logo-icon {
+        width: auto;
+        height: 30px;
+    }
+
+    .section-description {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: var(--textColor);
+    }
+
+    .mission-section ul {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding-left: 20px;
+    }
+
+    .mission-section ul li {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 10px;
+    }
+/* General Styling */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background-color: var(--backgroundImage);
+}
+
+/* Navigation Links */
+nav {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--textColor);
+    margin: 0 15px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+nav.nav-active {
+    display: flex;
+}
+
+.auth-buttons {
+    display: flex;
+}
+
+/* Hamburger Menu Styling */
+.hamburger-menu {
+    display: none; /* Hidden on larger screens */
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        row-gap: 1rem;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: var(--backgroundImage);
+        padding: 20px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    nav.nav-active {
+        display: flex;
+    }
+
+    .auth-buttons {
+        flex-direction: column;
+        padding: 20px 0;
+    }
+
+    .hamburger-menu {
+        display: block;
+        font-size: 1.8rem;
+        color: var(--textColor);
+    }
+
+    header {
+        flex-wrap: wrap;
+    }
+
+    .hamburger-menu:hover {
+        color: var(--hover);
+    }
+}
+
+    </style>
+    
+</head>
+<body>
+    <div id="app">
+        <header>
+            <!-- Logo Section -->
+            <div class="logo-container">
+                <img src="./images/header Icons.png" alt="Company Logo">
+                <h1>YourSkills</h1>
+            </div>
+        
+            <!-- Hamburger Menu Button -->
+            <button class="hamburger-menu" @click="toggleMenu">
+    <i v-if="!isMenuOpen" class="fas fa-bars"></i>
+    <i v-else class="fas fa-times"></i>
+</button>
+
+            
+            
+        
+            <!-- Navigation Section -->
+            <nav :class="{ 'nav-active': isMenuOpen }">
+                <a v-for="link in navLinks" :key="link.text" :href="link.href">{{ link.text }}</a>
+            </nav>
+        
+            <!-- Buttons Section -->
+            <div class="auth-buttons" v-if="isMenuOpen || screenWidth > 768">
+                <button class="sign-in">Sign In</button>
+                <button class="sign-up">Sign Up</button>
+            </div>
+        </header>
+        
+
+        <!-- About Us Section -->
+        <section class="about-section">
+            <h1 class="section-title">
+                About Us
+                <img src="./images/logo icon.png" alt="Icon" class="logo-icon">
+            </h1>
+            <p class="section-description">
+                {{ aboutDescription }}
+            </p>
+        </section>
+
+        <!-- Our Mission Section -->
+        <section class="mission-section">
+            <h2 class="section-title">Our Mission
+                <img src="./images/logo icon.png" alt="Icon" class="logo-icon">
+            </h2>
+            <ul>
+                <li v-for="point in missionPoints" :key="point">{{ point }}</li>
+            </ul>
+            <p class="section-description">
+                {{ missionDescription }}
+            </p>
+        </section>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    aboutDescription:
+                        "YourSkills is an innovative AI-powered platform designed to revolutionize skills management for businesses globally. By leveraging cutting-edge artificial intelligence and machine learning technologies, YourSkills aims to bridge the gap between businesses and skilled professionals, while fostering continuous learning and development.",
+                    missionPoints: [
+                        "Utilizes advanced algorithms for precise skill matching.",
+                        "Provides personalized learning paths to keep skills relevant.",
+                        "Implements robust skill verification and certification processes.",
+                        "Offers real-time skill analytics to track market demands.",
+                        "Facilitates seamless project collaboration in a secure environment.",
+                    ],
+                    missionDescription:
+                        "By integrating these features with Industry 5.0 concepts, YourSkills creates a dynamic ecosystem that enhances human-AI collaboration, promotes sustainable skill development, and adapts to the evolving needs of both businesses and professionals. YourSkills is an AI-powered platform that revolutionizes skills management in Industry 5.0 by instantly connecting businesses with skilled professionals and offering personalized project management. It leverages advanced algorithms for precise skill matching, verification, and real-time analytics to address the challenges of efficiently matching skills with project requirements to boost freelance income and business growth. YourSkills is all-in-one skills management platform to save costs as you scale your business. With the help of AI, our software analyzes your project requirements and match with relevant skilled talent, helping you reduce mismatch risks, time and costs on workforce hiring while providing high quality.",
+                    navLinks: [
+                        { text: "Home", href: "#" },
+                        { text: "For Professionals", href: "#" },
+                        { text: "About Us", href: "#" },
+                        { text: "Contact", href: "#" },
+                    ],
+                    isMenuOpen: false, // Tracks whether the menu is open
+                    screenWidth: window.innerWidth, // Tracks screen width
+                };
+            },
+            methods: {
+                toggleMenu() {
+                    this.isMenuOpen = !this.isMenuOpen; // Toggle menu visibility
+                },
+                updateScreenWidth() {
+                    this.screenWidth = window.innerWidth;
+                    if (this.screenWidth > 768) {
+                        this.isMenuOpen = false; // Automatically close menu on larger screens
+                    }
+                },
+            },
+
+            mounted() {
+                window.addEventListener("resize", this.updateScreenWidth);
+            },
+            beforeUnmount() {
+                window.removeEventListener("resize", this.updateScreenWidth);
+            },
+        });
+    
+        app.mount("#app");
+    </script>
+    
+</body>
